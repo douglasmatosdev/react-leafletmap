@@ -4,6 +4,7 @@ import data from './data'
 import { Local } from './types'
 import { Icon } from 'leaflet'
 import Logo from './logo.svg'
+import 'leaflet/dist/leaflet.css'
 
 import './App.css';
 
@@ -18,6 +19,7 @@ function App() {
         <Map center={[-22.655251, -43.254572]} zoom={14}>
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                // url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.pn" // dartheme
                 attribution="&copy;
             <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a>
             contributors"
@@ -25,7 +27,7 @@ function App() {
 
             {data && data.map((local, i: number) => {
                 console.log(local)
-                const icon = local?.img ? new Icon({ iconUrl: local.img, iconSize: [25, 25]}) : defaultIcon
+                const icon = local?.img ? new Icon({ iconUrl: local.img, iconSize: [25, 25] }) : defaultIcon
                 return (
                     <Marker
                         key={`${i}`}
